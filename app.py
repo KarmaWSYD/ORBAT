@@ -53,6 +53,7 @@ async def on_ready():
     print('------') # Used to signal to docker that the container is running
 
 @client.tree.command()
+@app_commands.checks.has_permissions(discord.Permissions.administrator == True)
 async def hello(interaction: discord.Interaction):
     """Says hello!"""
     
