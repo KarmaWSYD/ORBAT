@@ -55,10 +55,11 @@ async def on_ready():
 @client.tree.command()
 async def hello(interaction: discord.Interaction):
     """Says hello!"""
-    await interaction.response.send_message(f'Hi, {interaction.user.mention}')
-    perms = await interaction.user.guild_permissions.administrator
-    if perms == True:
+    
+    if await interaction.user.guild_permissions.administrator == True:
         await interaction.response.send_message('You have admin permissions')
+    else:
+        await interaction.response.send_message(f'Hi, {interaction.user.mention}')
 
 
 load_dotenv()
