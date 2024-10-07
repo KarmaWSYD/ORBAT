@@ -53,12 +53,13 @@ async def on_ready():
     print('------') # Used to signal to docker that the container is running
 
 @client.tree.command()
-@app_commands.checks.has_permissions(discord.Permissions.administrator == True)
 async def hello(interaction: discord.Interaction):
     """Says hello!"""
-    await interaction.response.send_message(f'Hi, {interaction.user.mention}')
+    if interaction.app_permissions.administrator == True:
+        await interaction.response.send_message(f'You are an admin')
+    else:
+        await interaction.response.send_message(f'You are not an admin')
     
-
 load_dotenv()
 token = os.getenv("DISCORD_TOKEN")
 client.run(token) 
