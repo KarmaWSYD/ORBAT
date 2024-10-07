@@ -56,10 +56,8 @@ async def on_ready():
 async def hello(interaction: discord.Interaction):
     """Says hello!"""
     
-    if await interaction.user.guild_permissions.administrator == True:
-        await interaction.response.send_message('You have admin permissions')
-    else:
-        await interaction.response.send_message(f'Hi, {interaction.user.mention}')
+    print(await interaction.user.guild_permissions)
+    await interaction.response.send_message(f'Hi, {interaction.user.mention}')
 
 
 load_dotenv()
