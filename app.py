@@ -56,10 +56,8 @@ async def on_ready():
 @app_commands.checks.has_permissions(discord.Permissions.administrator == True)
 async def hello(interaction: discord.Interaction):
     """Says hello!"""
-    
-    print(await interaction.user.guild_permissions)
     await interaction.response.send_message(f'Hi, {interaction.user.mention}')
-
+    
 
 load_dotenv()
 token = os.getenv("DISCORD_TOKEN")
