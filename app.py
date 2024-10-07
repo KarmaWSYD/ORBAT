@@ -55,7 +55,7 @@ async def on_ready():
 @client.tree.command()
 async def hello(interaction: discord.Interaction):
     """Says hello!"""
-    if interaction.user.guild_permissions.administrator == True:
+    if interaction.user.resolved_permissions.administrator == True:
         await interaction.response.send_message(f'You are an admin')
     else:
         await interaction.response.send_message(f'You are not an admin')
