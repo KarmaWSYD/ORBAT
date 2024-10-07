@@ -6,7 +6,6 @@ import discord
 from discord import app_commands 
 import pickle
 import asyncio
-import websockets
 
 class Server():
     pass
