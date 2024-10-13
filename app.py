@@ -29,10 +29,12 @@ class Member():
         return self.member_id
 
 class Organization():
-    def __init__(self):
+    def __init__(self, name):
         self.leadership = {}
         self.members = {}
-        self.name = ""
+        self.name = name
+        self.above = {}
+        self.below = {}
         
     async def add_member(self, member_id):
         self.members.update({member_id: Member(member_id)})
@@ -48,7 +50,18 @@ class Organization():
         
     async def set_name(self, name):
         self.name = name
+        
+    async def set_above(self, commands):
+        self.above.update(commands)
 
+    async def set_below(self, commands):
+        self.below.update(commands)
+
+    async def get_members(self):
+        return self.members
+
+    async def get_leaders(self):
+        return self.leadership
 
 class Server():
     def __init__(self):
@@ -123,4 +136,4 @@ async def hello(interaction: discord.Interaction):
     
 load_dotenv()
 token = os.getenv("DISCORD_TOKEN")
-client.run(token) 
+client.run(token)
